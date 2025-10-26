@@ -1,1 +1,128 @@
-# my-website
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的個人網站</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-image: url('0.jpg'); /* 背景圖片路徑 */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: "Microsoft JhengHei";
+      color: white;
+
+      font-family: "Microsoft JhengHei", sans-serif;
+      margin: 0;
+      text-align: center;
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 1rem;
+    }
+
+    nav {
+      margin: 15px 0;
+    }
+
+    nav button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    nav button:hover {
+      background-color: #0056b3;
+    }
+
+    section {
+      display: none; /* 預設隱藏 */
+      margin-top: 20px;
+    }
+
+    section.active {
+      display: block; /* 顯示選中的內容 */
+    }
+
+    video, img, canvas {
+      max-width: 90%;
+      height: auto;
+      margin-top: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>歡迎來到我的網站</h1>
+    <p>這裡有我喜歡的照片、影片，以及統計圖表。</p>
+  </header>
+
+  <nav>
+    <button onclick="showSection('video')">影片</button>
+    <button onclick="showSection('photo')">照片</button>
+    <button onclick="showSection('chart')">統計圖表</button>
+  </nav>
+
+  <!-- 影片區 -->
+  <section id="video" class="active">
+    <h2>我最喜歡的影片</h2>
+    <video width="640" height="360" controls>
+      <source src="Spirits.mp4" type="video/mp4">
+      您的瀏覽器不支援影片播放。
+    </video>
+  </section>
+
+  <!-- 照片區 -->
+  <section id="photo">
+    <h2>最喜歡的圖片</h2>
+    <img src="17585.jpg" alt="頭貼" width="300">
+  </section>
+
+  <!-- 統計圖區 -->
+  <section id="chart">
+    <h2>我的興趣統計</h2>
+    <canvas id="myChart" width="400" height="200"></canvas>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // 切換顯示不同內容
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+
+    // 統計圖
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['音樂', '看小說', '運動', '遊戲'],
+        datasets: [{
+          label: '喜好程度',
+          data: [8, 10, 6, 7],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
