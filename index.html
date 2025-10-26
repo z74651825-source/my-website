@@ -62,6 +62,25 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin: 10px 0;
+    }
+
+    ul li a {
+      color: white;
+      text-decoration: underline;
+      font-size: 18px;
+    }
+
+    ul li a:hover {
+      color: #ffd700;
+    }
+
   </style>
 </head>
 <body>
@@ -74,6 +93,7 @@
     <button onclick="showSection('video')">影片</button>
     <button onclick="showSection('photo')">照片</button>
     <button onclick="showSection('chart')">統計圖表</button>
+    <button onclick="showSection('classmates')">同學網站</button>
   </nav>
 
   <!-- 影片區 -->
@@ -97,6 +117,16 @@
     <canvas id="myChart" width="400" height="200"></canvas>
   </section>
 
+  <!-- 同學網站區 -->
+  <section id="classmates">
+    <h2>班上同學網站連結</h2>
+    <ul>
+      <li><a href="https://classmate1.github.io/" target="_blank">同學1的網站</a></li>
+      <li><a href="https://classmate2.github.io/" target="_blank">同學2的網站</a></li>
+      <li><a href="https://classmate3.github.io/" target="_blank">同學3的網站</a></li>
+    </ul>
+  </section>
+  
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     // 切換顯示不同內容
@@ -127,5 +157,6 @@
 </body>
 
 </html>
+
 
 
